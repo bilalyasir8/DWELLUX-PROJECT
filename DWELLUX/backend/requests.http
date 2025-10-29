@@ -1,0 +1,70 @@
+POST http://localhost:5000/api/users/register
+Content-Type: application/json
+
+{
+    "email": "testuser@example.com",
+    "password": "password123"
+}
+
+###
+POST http://localhost:5000/api/users/login
+Content-Type: application/json
+
+{
+    "email": "testuser@example.com",
+    "password": "password123"
+}
+###
+POST http://localhost:5000/api/users/register
+Content-Type: application/json
+
+{
+    "email": "testuser22@example.com",
+    "password": "password222df3"
+}
+###
+POST http://localhost:5000/api/users/login
+Content-Type: application/json
+
+{
+    "email": "testuser22@example.com",
+    "password": "password222df3"
+}
+
+### Vendor Registration Request
+POST http://localhost:5000/api/vendors/register
+Content-Type: application/json
+
+{
+    "companyName": "My Dwellux Store",
+    "email": "myvendor@example.com",
+    "password": "vendorpassword123"
+}
+
+
+### Get a JWT Token (Login as Vendor First)
+POST http://localhost:5000/api/vendors/login
+Content-Type: application/json
+
+{
+    "email": "myvendor@example.com",
+    "password": "vendorpassword123"
+}
+
+### Add a New Product (Use the token from the login response)
+POST http://localhost:5000/api/products
+Content-Type: application/json
+x-auth-token: <"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2ZW5kb3IiOnsiaWQiOiI2OGNmNDE5YzA1NWE5MGI3OWZjNTM3NWEifSwiaWF0IjoxNzU4NDEzNTU2LCJleHAiOjE3NTg0MTcxNTZ9.n-7ld9Ggg3239BHUUB5mdaOcKl4BCfHF-0hmhcv5klY>
+
+{
+    "name": "Stylish Wood Coffee Table",
+    "description": "A modern coffee table made from solid oak.",
+    "price": 250,
+    "images": ["url-to-image1.jpg", "url-to-image2.jpg"]
+}
+
+### Get All Products
+GET http://localhost:5000/api/products
+
+### Get a Single Product (Replace with a real product ID)
+GET http://localhost:5000/api/products/650f0f5b1d4c2b3e4f5a6b7c
